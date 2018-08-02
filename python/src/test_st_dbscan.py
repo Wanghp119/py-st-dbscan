@@ -10,10 +10,10 @@ filename = 'sample.csv'
 
 
 def test_time():
-    df = pd.read_csv(filename,sep=";",converters={'date_time': parse_dates})
+    df = pd.read_csv(filename,sep=",",converters={'date_time': parse_dates})
     result_t600 = st_dbscan(df, spatial_threshold=500, temporal_threshold=600, min_neighbors=5)
 
-    df = pd.read_csv(filename,sep=";",converters={'date_time': parse_dates})
+    df = pd.read_csv(filename,sep=",",converters={'date_time': parse_dates})
     result_t6 = st_dbscan(df, spatial_threshold=500, temporal_threshold=0.6, min_neighbors=5)
 
     assert not result_t600.equals(result_t6)
